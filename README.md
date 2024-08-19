@@ -29,7 +29,9 @@ Download
 
 > [!IMPORTANT] 
 > Beta versions mean using dev patches, not using beta apk files. Beta version have the same package name as Stable version, so installing them will overwrite Stable version.
-
+>
+> This repository doesn't create new releases because it includes multiple projects, which would result in spamming releases every day. You should follow the dev repository for updates.
+> 
 ---
 
 ## [MicroG ReVanced:](https://github.com/ReVanced/GmsCore)
@@ -174,17 +176,11 @@ Download
 
 [![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://play.google.com/store/apps/details?id=com.twitter.android)
 
-### [Piko: (More Features)](https://github.com/crimera/piko)
+### [Piko:](https://github.com/crimera/piko)
 
 | [Stable version](https://github.com/crimera/piko/releases/latest)        | [Beta version](https://github.com/crimera/piko/releases/)              |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- | 
 | [All Architectures](../../releases/download/all/twitter-stable-piko.apk) | [All Architectures](../../releases/download/all/twitter-beta-piko.apk) |
-
-### Revanced:
-
-| Stable version                                                        | Beta version                                                               |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------- | 
-| [All Architectures](../../releases/download/all/twitter-revanced.apk) | [All Architectures](../../releases/download/all/twitter-beta-revanced.apk) |
 
 ---
 
@@ -195,6 +191,16 @@ Download
 | Stable version                                                            | Beta version                                                                   |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | 
 | [Arm64-v8a](../../releases/download/all/instagram-arm64-v8a-revanced.apk) | [Arm64-v8a](../../releases/download/all/instagram-arm64-v8a-beta-revanced.apk) |
+
+---
+
+### [Google Photos:](https://play.google.com/store/apps/details?id=com.google.android.apps.photos)
+
+### Revanced:
+
+| Stable version                                                            | Beta version                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | 
+| [Arm64-v8a](../../releases/download/all/gg-photos-arm64-v8a-revanced.apk) | [Arm64-v8a](../../releases/download/all/gg-photos-arm64-v8a-beta-revanced.apk) |
 
 ---
 
@@ -415,6 +421,10 @@ Download
 </details>
 
 [Markdown Badges](https://github.com/Ileriayo/markdown-badges) - [MIT](https://github.com/Ileriayo/markdown-badges/blob/master/LICENSE)
+
+[HTMLQ](https://github.com/mgdm/htmlq) - [MIT](https://github.com/mgdm/htmlq/blob/master/LICENSE.md)
+
+[APKEditor](https://github.com/REAndroid/APKEditor) - [Apache-2.0](https://github.com/REAndroid/APKEditor/blob/master/LICENSE)
 
 ---
 

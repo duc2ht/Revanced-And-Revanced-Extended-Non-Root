@@ -10,6 +10,15 @@ dl_gh "revanced-cli" "revanced" "latest"
 
 #################################################
 
+# Patch Google photos:
+# Arm64-v8a
+get_patches_key "gg-photos"
+version="6.94.0.662644291"
+get_apk "com.google.android.apps.photos" "gg-photos-arm64-v8a-beta" "photos" "google-inc/photos/photos" "arm64-v8a"
+patch "gg-photos-arm64-v8a-beta" "revanced"
+
+##################################################################################################
+
 # Patch Facebook:
 # Arm64-v8a
 get_patches_key "facebook"
@@ -35,6 +44,7 @@ patch "lightroom-beta" "revanced"
 
 # Patch Tumblr:
 get_patches_key "tumblr"
+version="35.0.0.110"
 get_apk "com.tumblr" "tumblr-beta" "tumblr" "tumblr-inc/tumblr/tumblr"
 patch "tumblr-beta" "revanced"
 
