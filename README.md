@@ -20,7 +20,7 @@ They are open-source scripts for patching various apps like YouTube, YouTube Mus
 Simply, all you need to do is choose the app you want to use from the options below: 'Revanced' or 'Revanced Extended'. Then, select your phone's CPU architecture. If you don't know what your phone's CPU architecture is, choose All Architectures. That's all there is to it.
 
 > [!NOTE]
-> If you want to use the YouTube, YouTube Music or Google Photos app, you need to download and install [MicroG](https://github.com/ReVanced/GmsCore/releases).
+> If you want to use the YouTube, YouTube Music or Google Photos app, you need to download and install [MicroG RE](https://github.com/MorpheApp/MicroG-RE) or [MicroG](https://github.com/ReVanced/GmsCore/releases)
 > 
 > If you are an advanced user and you want to use custom patches for patching apps, you should read the [Wiki](../main/docs/Frequently%20Asked%20Questions.md#q-how-do-i-use-this-repository-for-patching-my-own-app).
 > 
@@ -106,11 +106,17 @@ Download
 
 #### [FX File Explorer](?tab=readme-ov-file#fx-file-explorer-1)
 
+#### [MyFitnessPal](?tab=readme-ov-file#MyFitnessPal-1)
+
 </details>
+
+## [MicroG RE:](https://github.com/MorpheApp/MicroG-RE)
+
+[![Release](https://img.shields.io/github/v/release/MorpheApp/MicroG-RE?label=All%20Architectures&style=for-the-badge)](https://github.com/MorpheApp/MicroG-RE/releases) 
 
 ## [MicroG ReVanced:](https://github.com/ReVanced/GmsCore)
 
-[![Release](https://img.shields.io/github/v/release/ReVanced/GmsCore?label=All-arch&style=for-the-badge)](https://github.com/ReVanced/GmsCore/releases) 
+[![Release](https://img.shields.io/github/v/release/ReVanced/GmsCore?label=All%20Architectures&style=for-the-badge)](https://github.com/ReVanced/GmsCore/releases) 
 
 ---
 
@@ -552,6 +558,16 @@ Download
 | Stable version                                                            | Beta version                                                                  |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | 
 | [All Architectures](../../releases/download/all/crunchyroll-revanced.apk) | [All Architectures](../../releases/download/all/crunchyroll-beta-revanced.apk)|
+
+---
+
+### [MyFitnessPal:](https://play.google.com/store/apps/details?id=com.myfitnesspal.android)
+
+### [Revanced:](https://github.com/revanced/revanced-patches)
+
+| Stable version                                                             | Beta version                                                                   |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | 
+| [All Architectures](../../releases/download/all/MyFitnessPal-revanced.apk) | [All Architectures](../../releases/download/all/MyFitnessPal-beta-revanced.apk)|
 
 ---
 
