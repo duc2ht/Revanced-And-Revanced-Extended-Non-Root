@@ -4,7 +4,7 @@ source ./src/build/utils.sh
 # Download requirements
 revanced_dl(){
 	dl_gh "revanced-patches" "revanced" "prerelease"
- 	dl_gh "revanced-cli" "revanced" "latest"
+ 	dl_gh "revanced-cli" "revanced" "prerelease"
 }
 1() {
 	revanced_dl
@@ -107,7 +107,7 @@ revanced_dl(){
 	patch "tumblr-arm64-v8a-beta" "revanced"
 	# Patch SoundCloud:
 	get_patches_key "soundcloud"
-	get_apk "com.soundcloud.android" "soundcloud-beta" "soundcloud-soundcloud" "soundcloud/soundcloud-soundcloud/soundcloud-play-music-songs" "Bundle_extract"
+	get_apk "com.soundcloud.android" "soundcloud-beta" "soundcloud-soundcloud" "soundcloud/soundcloud-soundcloud/soundcloud-the-music-you-love" "Bundle_extract"
 	split_editor "soundcloud-beta" "soundcloud-beta"
 	patch "soundcloud-beta" "revanced"
 	# Patch SoundCloud Arm64-v8a:
@@ -169,7 +169,7 @@ revanced_dl(){
 	patch "duolingo-beta" "revanced"
 	# Patch Google News Arm64-v8a
 	get_patches_key "GoogleNews"
-	get_apk "com.google.android.apps.magazines" "googlenews-beta" "google-news" "google-inc/google-news/google-news" "Bundle_extract"
+	get_apk "com.google.android.apps.magazines" "googlenews-beta" "google-news" "google-inc/google-news/google-news-daily-headlines" "Bundle_extract"
 	split_editor "googlenews-beta" "googlenews-beta-arm64-v8a" "exclude" "split_config.armeabi_v7a split_config.x86 split_config.x86_64"
 	patch "googlenews-beta-arm64-v8a" "revanced"
 }
@@ -182,7 +182,7 @@ revanced_dl(){
 	patch "photomath-beta" "revanced"
 	# Patch Strava:
 	get_patches_key "strava"
-	get_apkpure "com.strava" "strava-beta-arm64-v8a" "strava-run-hike-2025-health/com.strava" "Bundle"
+	get_apkpure "com.strava" "strava-beta-arm64-v8a" "strava-run-hike-android-exercise-laugh/com.strava" "Bundle"
 	patch "strava-beta-arm64-v8a" "revanced"
 }
 12() {

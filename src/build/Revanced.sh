@@ -185,7 +185,7 @@ revanced_dl(){
 	patch "photomath" "revanced"
 	# Patch Strava:
 	get_patches_key "strava"
-	get_apkpure "com.strava" "strava-arm64-v8a" "strava-run-hike-2025-health/com.strava" "Bundle"
+	get_apkpure "com.strava" "strava-arm64-v8a" "strava-run-hike-android-exercise-laugh/com.strava" "Bundle"
 	patch "strava-arm64-v8a" "revanced"
 }
 12() {

@@ -195,7 +195,12 @@ get_apk() {
 		  num=${BASH_REMATCH[1]}
 
 		  if [ "$num" -ge "$min_major" ]; then
-			version=$(java -jar *cli*.jar list-patches --with-packages --with-versions $patch_glob | awk -v pkg="$1" '
+			if [ "$num" -ge 6 ]; then
+			  list_patches_flags="list-patches -bp"
+			else
+			  list_patches_flags="list-patches --with-packages --with-versions"
+			fi
+			version=$(java -jar *cli*.jar $list_patches_flags $patch_glob | awk -v pkg="$1" '
 			  BEGIN { found = 0; printing = 0 }
 			  /^Index:/ { if (printing) exit; found = 0 }
 			  /Package name: / { if ($3 == pkg) found = 1 }
@@ -293,7 +298,12 @@ get_apkpure() {
 		  num=${BASH_REMATCH[1]}
 
 		  if [ "$num" -ge "$min_major" ]; then
-			version=$(java -jar *cli*.jar list-patches --with-packages --with-versions $patch_glob | awk -v pkg="$1" '
+			if [ "$num" -ge 6 ]; then
+			  list_patches_flags="list-patches -bp"
+			else
+			  list_patches_flags="list-patches --with-packages --with-versions"
+			fi
+			version=$(java -jar *cli*.jar $list_patches_flags $patch_glob | awk -v pkg="$1" '
 			  BEGIN { found = 0; printing = 0 }
 			  /^Index:/ { if (printing) exit; found = 0 }
 			  /Package name: / { if ($3 == pkg) found = 1 }
@@ -373,9 +383,12 @@ patch() {
 		else
 			if [[ $(ls revanced-cli-*.jar) =~ revanced-cli-([0-9]+) ]]; then
 				num=${BASH_REMATCH[1]}
-				if [ $num -ge 5 ]; then
+				if [ $num -eq 6 ]; then
+					p="patch " b="-bp *.rvp" m="" a="" ks=" --keystore=./src/ks.keystore" pu="--purge=true" opt="" force=" --force"
+					echo "Patching with Revanced-cli version 6+"
+				elif [ $num -eq 5 ]; then
 					p="patch " b="-p *.rvp" m="" a="" ks=" --keystore=./src/ks.keystore" pu="--purge=true" opt="" force=" --force"
-					echo "Patching with Revanced-cli version 5+"
+					echo "Patching with Revanced-cli version 5"
 				elif [ $num -eq 4 ]; then
 					p="patch " b="--patch-bundle *patch*.jar" m="--merge *integration*.apk " a="" ks=" --keystore=./src/ks.keystore" pu="--purge=true" opt="--options=./src/options/$2.json "
 					echo "Patching with Revanced-cli version 4"
