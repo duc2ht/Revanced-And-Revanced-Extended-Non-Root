@@ -128,13 +128,13 @@ jobs:
     uses: ./.github/workflows/manual-patch.yml
     with:
       org: "Revanced"
-  Patch-Revanced-Beta:
-    name: Patch Revanced Beta
-    needs: check
-    if: ${{ needs.check.outputs.check_rv_beta == 1 }}
-    uses: ./.github/workflows/manual-patch.yml
-    with:
-      org: "Revanced Beta"
+#  Patch-Revanced-Beta:
+#    name: Patch Revanced Beta
+#    needs: check
+#    if: ${{ needs.check.outputs.check_rv_beta == 1 }}
+#    uses: ./.github/workflows/manual-patch.yml
+#    with:
+#      org: "Revanced Beta"
   Patch-Morphe:
     name: Patch Morphe
     needs: check

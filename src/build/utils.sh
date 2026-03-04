@@ -196,7 +196,7 @@ get_apk() {
 
 		  if [ "$num" -ge "$min_major" ]; then
 			if [ "$num" -ge 6 ]; then
-			  list_patches_flags="list-patches -bp"
+			  list_patches_flags="list-patches --packages --versions --options -bp"
 			else
 			  list_patches_flags="list-patches --with-packages --with-versions"
 			fi
@@ -299,7 +299,7 @@ get_apkpure() {
 
 		  if [ "$num" -ge "$min_major" ]; then
 			if [ "$num" -ge 6 ]; then
-			  list_patches_flags="list-patches -bp"
+			  list_patches_flags="list-patches --packages --versions --options -bp"
 			else
 			  list_patches_flags="list-patches --with-packages --with-versions"
 			fi
