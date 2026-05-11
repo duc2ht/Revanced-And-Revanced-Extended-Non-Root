@@ -722,7 +722,7 @@ Download
 
 ### [Revenge:](https://github.com/revenge-mod/revenge-xposed)
 
-[All Architectures](../../releases/download/all/discord-revenge.apk)
+[All Architectures](../../releases/download/all/discord-revenge-lspatched.apk )
 
 ---
 
