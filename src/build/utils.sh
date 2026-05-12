@@ -270,21 +270,27 @@ detect_version() {
 
 _fs_get() {
 	local url=$1
-	local response
-	response=$(curl -s -X POST 'http://localhost:8191/v1' \
-		-H 'Content-Type: application/json' \
-		-d "{\"cmd\":\"request.get\",\"url\":\"$url\",\"maxTimeout\":60000}")
-	local status
-	status=$(echo "$response" | jq -r '.status // empty')
-	if [[ "$status" != "ok" ]]; then
-		red_log "[-] FlareSolverr failed: $url"
-		return 1
-	fi
-	html=$(echo "$response" | jq -r '.solution.response // empty')
-	export FS_COOKIES
-	FS_COOKIES=$(echo "$response" | jq -r '[.solution.cookies[] | .name + "=" + .value] | join("; ")')
-	user_agent=$(echo "$response" | jq -r '.solution.userAgent // empty')
-	return 0
+	local max_retries=5
+	local attempt
+	for attempt in $(seq 1 $max_retries); do
+		local response
+		response=$(curl -s -X POST 'http://localhost:8191/v1' \
+			-H 'Content-Type: application/json' \
+			-d "{\"cmd\":\"request.get\",\"url\":\"$url\",\"maxTimeout\":60000}")
+		local status
+		status=$(echo "$response" | jq -r '.status // empty')
+		if [[ "$status" == "ok" ]]; then
+			html=$(echo "$response" | jq -r '.solution.response // empty')
+			export FS_COOKIES
+			FS_COOKIES=$(echo "$response" | jq -r '[.solution.cookies[] | .name + "=" + .value] | join("; ")')
+			user_agent=$(echo "$response" | jq -r '.solution.userAgent // empty')
+			return 0
+		fi
+		yellow_log "[!] FlareSolverr attempt $attempt/$max_retries failed: $url"
+		sleep 10
+	done
+	red_log "[-] FlareSolverr failed after $max_retries attempts: $url"
+	return 1
 }
 
 get_apk() {
