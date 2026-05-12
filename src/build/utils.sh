@@ -320,16 +320,14 @@ get_apk() {
 
 	local version_href=""
 
-	if [[ -n "$example_url" ]]; then
+	if [[ -n "$example_url" && -n "$version" ]]; then
 		version_href="${example_url#$base_url}"
-		if [[ -n "$version" ]]; then
-			local slug_ver
-			slug_ver=$(echo "$version_href" | grep -oP '\d+(-\d+)+' | tail -1)
-			local target_ver
-			target_ver=$(echo "$version" | tr '.' '-' | grep -oP '\d+(-\d+)+')
-			if [[ -n "$slug_ver" ]]; then
-				version_href="${version_href/$slug_ver/$target_ver}"
-			fi
+		local slug_ver
+		slug_ver=$(echo "$version_href" | grep -oP '\d+(-\d+)+' | tail -1)
+		local target_ver
+		target_ver=$(echo "$version" | tr '.' '-' | grep -oP '\d+(-\d+)+')
+		if [[ -n "$slug_ver" ]]; then
+			version_href="${version_href/$slug_ver/$target_ver}"
 		fi
 	else
 		_fs_get "$list_url" || return 1
@@ -604,7 +602,18 @@ patch() {
 lspatch() {
 	green_log "[+] Patching $1:"
 	if [ -f "./download/$1.apk" ]; then
-		java -jar lspatch.jar ./download/$1.apk -k ./src/fiorenmas.ks fiorenmas fiorenmas fiorenmas -m $2.apk -o ./release/
+		local module
+		if [[ "$2" == *.apk ]]; then
+			local -a matches=($2)
+			module="${matches[0]}"
+		else
+			module="$2.apk"
+		fi
+		if [[ ! -f "$module" ]]; then
+			red_log "[-] Module not found: $2"
+			return 1
+		fi
+		java -jar lspatch.jar ./download/$1.apk -k ./src/fiorenmas.ks fiorenmas fiorenmas fiorenmas -m "$module" -o ./release/
 		mv ./release/$1-*-lspatched.apk ./release/$1-$3-lspatched.apk
 	else
 		red_log "[-] Not found $1.apk"
