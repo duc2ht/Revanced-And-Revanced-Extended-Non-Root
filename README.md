@@ -278,7 +278,7 @@ Download
 
 ### [gnadgnaoh:](https://github.com/gnadgnaoh/NexAlloy)
 
-This app might crash 2-3 times on the first startup. Don't worry—just try opening it again and it will work.
+This app might crash 2-3 times on the first startup. Don't worry - just try opening it again and it will work.
 
 [Arm64-v8a & Android 9+](../../releases/download/all/facebook-arm64-v8a-gnadgnaoh-lspatched.apk)
 
