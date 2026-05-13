@@ -14,7 +14,7 @@ LSPatch_dl(){
 }
 2() {
 	LSPatch_dl
-	dl_gh "NexAlloy" "gnadgnaoh" "prerelease"
+	dl_gh "NexAlloy" "gnadgnaoh" "v58"
 	# Patch Facebook:
 	get_apk "com.facebook.katana" "facebook-arm64-v8a" "apk" "arm64-v8a" "nodpi" "Android 9.0+"
 	lspatch "facebook-arm64-v8a" "NexAlloy*.apk" "gnadgnaoh"
