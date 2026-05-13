@@ -295,7 +295,7 @@ _fs_get() {
 
 get_apk() {
 	local pkg_name=$1 apk_name=$2
-	local pkg_type=${3:-apk} arch=${4:-} dpi=${5:-nodpi} minver=${6:-}
+	local pkg_type=${3:-apk} arch=${4:-} dpi=${5:-} minver=${6:-}
 	local base_url="https://www.apkmirror.com"
 	local html=""
 
@@ -397,18 +397,15 @@ get_apk() {
 	vtable_html=$(echo "$html" | $pup 'div.variants-table')
 	rows=$(echo "$vtable_html" | tr '\n' ' ' | sed 's/<div class="table-row/\n<div class="table-row/g')
 
-	if [[ -n "$arch" ]]; then
-		variant_href=$(echo "$rows" | grep -iP "apkm-badge[^>]*>\s*$type_badge\s*<" | grep -i "$arch" | \
-			grep -oP 'accent_color[^>]*href="\K[^"]+' | head -1)
-	fi
+	local filtered_rows
+	filtered_rows=$(echo "$rows" | grep -iP "apkm-badge[^>]*>\s*$type_badge\s*<")
+	[[ -n "$arch" ]] && filtered_rows=$(echo "$filtered_rows" | grep -i "$arch")
+	[[ -n "$dpi" ]] && filtered_rows=$(echo "$filtered_rows" | grep -i "$dpi")
+	[[ -n "$minver" ]] && filtered_rows=$(echo "$filtered_rows" | grep -i "$minver")
+	variant_href=$(echo "$filtered_rows" | grep -oP 'accent_color[^>]*href="\K[^"]+' | head -1)
 
 	if [[ -z "$variant_href" ]]; then
-		variant_href=$(echo "$rows" | grep -iP "apkm-badge[^>]*>\s*$type_badge\s*<" | \
-			grep -oP 'accent_color[^>]*href="\K[^"]+' | head -1)
-	fi
-
-	if [[ -z "$variant_href" ]]; then
-		red_log "[-] Could not find variant (type=$type_badge arch=${arch:-any})"
+		red_log "[-] Could not find variant (type=$type_badge arch=${arch:-any} dpi=$dpi)"
 		return 1
 	fi
 	variant_href=$(echo "$variant_href" | sed 's/&amp;/\&/g')
