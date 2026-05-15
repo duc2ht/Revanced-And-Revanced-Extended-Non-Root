@@ -654,6 +654,8 @@ lspatch() {
 		fi
 		java -jar lspatch.jar ./download/$1.apk -k ./src/fiorenmas.ks fiorenmas fiorenmas fiorenmas -m "$module" -o ./release/
 		mv ./release/$1-*-lspatched.apk ./release/$1-$3-lspatched.apk
+		unset version
+		unset lock_version
 	else
 		red_log "[-] Not found $1.apk"
 		exit 1
